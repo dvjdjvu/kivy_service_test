@@ -72,7 +72,7 @@ android.add_src = %(source.dir)s/java_src/*
 android.add_libs_arm64_v8a = %(source.dir)s/libs/libs_arm64_v8a/*.*
 android.add_libs_armeabi_v7a = %(source.dir)s/libs/libs_armeabi-v7a/*.*
 
-android.extra_manifest_application = %(source.dir)s/xml/receivers.xml
+android.extra_manifest_application_entry = %(source.dir)s/xml/receivers.xml
 
 [buildozer]
 
