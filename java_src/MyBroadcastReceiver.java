@@ -40,7 +40,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         ix.putExtra("serviceStartAsForeground", "true");
         ix.putExtra("serviceTitle", "ServiceTest");
         ix.putExtra("serviceDescription", "ServiceTest");
-        ix.putExtra("pythonServiceArgument", app_root + ":" + app_root + "/lib");
+        ix.putExtra("pythonServiceArgument", app_root + ":"  + "/lib");
+        ix.putExtra("smallIconName", "");
         ix.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startService(ix);
     }
