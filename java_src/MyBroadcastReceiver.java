@@ -1,5 +1,6 @@
 package com.heattheatr.kivy_service_test;
 
+import android.os.Build;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.Context;
@@ -42,7 +43,12 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         ix.putExtra("serviceDescription", "ServiceTest");
         ix.putExtra("pythonServiceArgument", app_root + ":" + app_root + "/lib");
         ix.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startService(ix);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(ix);
+        } else {
+            context.startService(ix);
+        }
     }
 
     public void service_stop(Context context, Intent intent) {
