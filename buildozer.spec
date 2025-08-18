@@ -18,7 +18,7 @@ source.include_exts = py,png,jpg,jpeg,ttf,kv,mp3, #,so,2,6,2,1,a
 source.include_patterns = img/*, font/*, ui/*, music/*
 
 # (list) Application version
-version = 0.0.28
+version = 0.0.3
 
 # NAME_SERVICE:PATH_TO_PY
 # (list) List of service to declare
@@ -26,8 +26,10 @@ services = Test:./service.py:foreground
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, \
-               kivy, \
+requirements = Cython,
+               python3,
+               kivy==2.3.1,
+               idna,
                jnius
 
 # (str) Custom source folders for requirements
@@ -52,7 +54,7 @@ android.api = 31
 android.minapi = 21
 
 # (str) Android NDK version to use
-android.ndk = 23b
+android.ndk = 25b
 
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
