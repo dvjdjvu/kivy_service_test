@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.Context;
 import org.kivy.android.PythonActivity;
 
+import android.util.Log;
 import java.lang.reflect.Method;
 
 import com.heattheatr.kivy_service_test.ServiceTest;
@@ -54,23 +55,22 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     public void service_stop(Context context, Intent intent) {
         Intent intent_stop = new Intent(context, ServiceTest.class);
-
         context.stopService(intent_stop);
     }
 
     // Обработчик сигналов.
     public void onReceive(Context context, Intent intent) {
+        System.out.println("python Context: " + context + ", Intent: " + intent.getAction());
+        System.out.println("python Build.VERSION.SDK_INT " + Build.VERSION.SDK_INT);
+
         switch (intent.getAction()) {
             case Intent.ACTION_BOOT_COMPLETED:
-                System.out.println("python MyBroadcastReceiver.java MyBroadcastReceiver.class onReceive.method: ACTION_BOOT_COMPLETED");
                 this.service_start(context, intent);
                 break;
             case Intent.ACTION_DELETE:
-                System.out.println("python MyBroadcastReceiver.java MyBroadcastReceiver.class onReceive.method: ACTION_DELETE");
                 this.service_stop(context, intent);
                 break;
             case Intent.ACTION_MAIN:
-                System.out.println("python MyBroadcastReceiver.java MyBroadcastReceiver.class onReceive.method: ACTION_MAIN");
                 this.start_app(context, intent);
                 break;
             default:

@@ -29,6 +29,7 @@ services = Test:./service.py:foreground
 requirements = Cython,
                python3,
                kivy==2.3.1,
+               filetype,
                idna,
                jnius
 
@@ -37,6 +38,9 @@ requirements = Cython,
 # requirements.source.kivy = ../../kivy
 #requirements.source.libtest = lib/libtest
 
+# (str) Icon of the application
+icon.filename = %(source.dir)s/img/crow.png
+
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
 
@@ -44,7 +48,13 @@ orientation = portrait
 fullscreen = 1
 
 # (list) Permissions
-android.permissions = WRITE_EXTERNAL_STORAGE,
+android.permissions = FOREGROUND_SERVICE,
+                      RECEIVE_BOOT_COMPLETED,
+                      QUICKBOOT_POWERON,
+                      ACCESS_COARSE_LOCATION,
+                      ACCESS_FINE_LOCATION,
+                      READ_EXTERNAL_STORAGE,
+                      WRITE_EXTERNAL_STORAGE,
                       FOREGROUND_SERVICE_LOCATION
 
 # (int) Target Android API, should be as high as possible.
@@ -71,7 +81,7 @@ android.accept_sdk_license = True
 android.archs = arm64-v8a
 
 # (list) Android additionnal libraries to copy into libs/armeabi
-android.add_src = %(source.dir)s/java_src/*
+android.add_src = %(source.dir)s/java_src
 android.add_libs_arm64_v8a = %(source.dir)s/libs/libs_arm64_v8a/*.*
 android.add_libs_armeabi_v7a = %(source.dir)s/libs/libs_armeabi-v7a/*.*
 

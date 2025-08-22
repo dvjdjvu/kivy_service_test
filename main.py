@@ -66,5 +66,8 @@ class ButtonApp(App):
 #  Старт.
 ##
 if __name__ == "__main__":
-    # Отрисовка графики приложения
-    ButtonApp().run()
+    try:
+        # Отрисовка графики приложения
+        ButtonApp().run()
+    except Exception as e:
+        print(f'python : Exception {str(e)}')
